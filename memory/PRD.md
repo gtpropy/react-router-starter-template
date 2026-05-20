@@ -1,61 +1,63 @@
 # SajiloHealth — Coming Soon Landing Page
 
 ## Original Problem Statement
-Build a premium "Coming Soon" landing page for SajiloHealth, a Nepal-based digital healthcare platform (appointments, video consults, EMR, billing, pharmacy, labs, QR payments, clinic marketplace, analytics). Tone: confident, clean, modern healthcare professionalism. Design like Stripe / Linear / Notion meets healthcare. White + soft blue palette.
+Build a premium "Coming Soon" landing page for SajiloHealth, a Nepal-based digital healthcare platform (appointments, video consults, EMR, billing, pharmacy, labs, QR payments, clinic marketplace, analytics). Iteration 2 elevation: **investor-grade / enterprise-grade / healthcare-infrastructure** brand. Must impress investors, doctors, clinic owners.
 
-## User Choices
-- Frontend-only (no backend); leads stored to localStorage
+## User Choices (cumulative)
+- Frontend-only (no backend); leads → localStorage
 - Beta form: Email + Role (Patient / Doctor / Clinic)
-- Bilingual: English + Nepali toggle (persisted via localStorage)
-- Logo placeholder (typographic wordmark)
-- Stripe-like crisp minimal aesthetic
+- Bilingual EN + Nepali (persisted via localStorage)
+- Logo placeholder (typographic wordmark with caduceus mark)
+- **Brand palette: Navy + Subtle Emerald (Palette C)**
+- Hero visual: bespoke clinic dashboard mockup (not stock 3D)
+- Investor signals strip (marquee)
+- Roadmap as horizontal stepper
 
 ## Architecture
-- **Frontend**: React 19 + Tailwind CSS + Shadcn UI base + Sonner toasts + lucide-react icons
-- **Fonts**: Outfit (headings) + Manrope (body) via Google Fonts
+- **Frontend**: React 19 + Tailwind + Shadcn base + Sonner + lucide-react
+- **Fonts**: Outfit (headings) + Manrope (body) + JetBrains Mono (data accents)
 - **State**: React Context for language (`/app/frontend/src/i18n/LanguageContext.jsx`)
 - **Copy**: Bilingual EN/NE in `/app/frontend/src/i18n/copy.js`
-- **Backend**: Not used (frontend-only per user choice)
+- **Backend**: Not used
 
-## User Personas
-- **Patients** (consumers): Want easy booking + records + local payments
-- **Doctors** (independent / clinic-affiliated): Want EMR, scheduling, marketplace visibility
-- **Clinics / Hospitals**: Want one operational system end-to-end (front desk → financials)
-
-## Core Requirements (static)
-1. Hero with eyebrow, headline, sub, paragraph, primary + secondary CTAs
-2. "What is SajiloHealth" positioning
-3. Patients benefit grid (4)
-4. Doctors benefit grid (4)
-5. Clinics benefit grid (5) — EMR, billing, pharmacy, tax-ready reports, QR payments
-6. Trust section (Built for Nepal — secure infra, regulatory awareness without claims)
-7. Beta invite form (email + role; limited seats messaging)
-8. Footer
-9. EN/NE toggle, persisted
-10. Premium Stripe-like aesthetic; no loud gradients; no hype
+## Brand System (v2)
+- Navy primary: `#0a1834` · Accent emerald: `#047857`
+- Surfaces: pure white, `#fafbfc`, `#0a1834` (dark sections)
+- Precision grid background in hero, glass-card dashboard mockup
+- Mono accents for data, 0.18em uppercase tracking for labels
 
 ## What's Been Implemented (Dec 2025)
-- ✅ Sticky glass header with brand wordmark, 4 nav links, EN/NE toggle, Join Beta CTA
-- ✅ Hero: animated eyebrow, headline, subheadline, paragraph, primary + secondary CTAs, 3D visual with floating spec cards
-- ✅ What section with capability pill grid
-- ✅ Patients / Doctors / Clinics bento grids with lucide icons
-- ✅ Dark brand tile completes the 5-item clinics grid
-- ✅ Trust section with soft Kathmandu background overlay
-- ✅ Beta form with email + role radio group, validation, success state, Sonner toast, localStorage persistence
-- ✅ Footer with tagline, "Designed and built in Kathmandu", and 3 footer links
-- ✅ Bilingual copy (EN + NE), persisted via localStorage `sh_lang`
-- ✅ data-testid attributes throughout
-- ✅ testing_agent_v3 — 14/14 checkpoints passed, 0 console errors, mobile-safe
+### Iteration 1 — MVP
+- Header (wordmark, nav, EN/NE toggle, CTA)
+- Hero, Patients, Doctors, Clinics, Trust, Beta form, Footer
+- Bilingual copy + localStorage persistence
+- testing_agent_v3: 14/14 passed
+
+### Iteration 2 — Enterprise/Investor-Grade Redesign
+- ✅ New navy + emerald brand system
+- ✅ New wordmark with caduceus-style icon + "Healthcare OS" tagline
+- ✅ Hero rebuilt with bespoke clinic dashboard mockup (KPIs, chart, queue, floating Payment & Prescription cards, security badge)
+- ✅ Eyebrow updated to "Healthcare Infrastructure for Nepal"
+- ✅ InvestorStrip section (marquee) below hero with 6 trust signals
+- ✅ What section: 4 pillars (Unified, Secure, Local-first, Long-term)
+- ✅ BenefitGrid refined: numbered cards (01/02/03), emerald icon chips, dark brand tile for Clinics
+- ✅ Trust section: 4-stat row (256-bit, 99.9%, RBAC, Audit) + 4 detail cards
+- ✅ Roadmap stepper: Private Beta (Active) → Public Beta (Q2) → Stable Release (Q3-Q4) → Nationwide (Year 2)
+- ✅ Beta form on dark navy background with emerald CTA
+- ✅ 3-column enterprise footer (Platform / Company / Legal) + "Private Beta · Active" status pill
+- ✅ Section numbering pattern (01–06) like a product spec sheet
+- ✅ testing_agent_v3: 14/14 passed, no console errors, mobile-safe
 
 ## Prioritized Backlog
 ### P1
 - Replace Privacy/Terms anchor stubs with real policy pages
-- Add a real provided logo when available
-- Wire form to a backend (when ready) — currently localStorage only
+- Drop in finalized brand logo when ready
+- Wire form to a backend / CRM (Resend, Mailchimp, MongoDB)
 
 ### P2
-- Add Open Graph / Twitter meta for shareable previews
-- Add a /thank-you route for SEO-trackable conversion
-- Add analytics events for CTA clicks and form submit
-- Optional: GSAP/Framer Motion scroll reveals for richer entrances
-- Optional: A scheduled launch countdown above the hero
+- OG/Twitter meta + share image
+- /thank-you route for SEO-trackable conversion
+- Analytics events (CTA clicks, scroll depth, form submit)
+- Split `i18n/copy.js` per-section as it grows
+- Make roadmap progress bar dynamic from active step index
+- Light-touch motion (Framer Motion) for premium reveals on scroll

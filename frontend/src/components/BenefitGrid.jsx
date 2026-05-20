@@ -21,27 +21,49 @@ const ICON_MAP = {
   clinics: [ClipboardList, Receipt, Pill, FileSpreadsheet, ScanLine],
 };
 
-export default function BenefitGrid({ id, label, headline, items, testId, audience }) {
+const SECTION_NUM = {
+  patients: "02",
+  doctors: "03",
+  clinics: "04",
+};
+
+export default function BenefitGrid({ id, label, headline, sub, items, testId, audience }) {
   const icons = ICON_MAP[audience] || [];
+  const num = SECTION_NUM[audience] || "00";
 
   return (
     <section
       id={id}
       data-testid={testId}
-      className="py-24 sm:py-32 border-t border-slate-100"
+      className="py-28 sm:py-36 border-t border-[rgba(15,34,71,0.06)]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <div className="text-xs uppercase tracking-[0.2em] font-semibold text-blue-600">
-            {label}
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-20 items-end">
+          <div className="lg:col-span-4">
+            <div className="inline-flex items-center gap-2">
+              <span className="w-6 h-px bg-slate-400" />
+              <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-slate-500">
+                {label}
+              </span>
+            </div>
+            <div className="mt-3 font-heading text-[13px] font-semibold text-slate-400">
+              {num} / Module
+            </div>
           </div>
-          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl font-medium text-slate-900 tracking-tight leading-[1.1]">
-            {headline}
-          </h2>
+          <div className="lg:col-span-8">
+            <h2 className="font-heading text-[32px] sm:text-[40px] lg:text-[48px] font-medium text-[#0a1834] tracking-tight leading-[1.08]">
+              {headline}
+            </h2>
+            {sub && (
+              <p className="mt-5 text-[16px] text-slate-600 leading-[1.6] font-body max-w-[620px]">
+                {sub}
+              </p>
+            )}
+          </div>
         </div>
 
         <div
-          className={`mt-14 grid gap-px bg-slate-200 border border-slate-200 rounded-2xl overflow-hidden ${
+          className={`mt-16 grid gap-px bg-[rgba(15,34,71,0.08)] border border-[rgba(15,34,71,0.08)] rounded-[18px] overflow-hidden ${
             items.length === 5
               ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
               : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
@@ -53,15 +75,20 @@ export default function BenefitGrid({ id, label, headline, items, testId, audien
               <div
                 key={idx}
                 data-testid={`${testId}-item-${idx}`}
-                className="bg-white p-8 md:p-10 card-hover"
+                className="bg-white p-8 lg:p-9 card-precise group"
               >
-                <span className="inline-flex w-11 h-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-                  <Icon strokeWidth={1.6} size={20} />
-                </span>
-                <div className="mt-6 text-[15px] font-semibold text-slate-900 font-heading tracking-tight">
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex w-10 h-10 items-center justify-center rounded-[10px] bg-[#f1f5f4] text-[#047857] group-hover:bg-emerald-50 transition-colors">
+                    <Icon strokeWidth={1.6} size={18} />
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                    0{idx + 1}
+                  </span>
+                </div>
+                <div className="mt-7 font-heading text-[16px] font-semibold text-[#0a1834] tracking-tight leading-snug">
                   {item.title}
                 </div>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed font-body">
+                <p className="mt-2 text-[13.5px] text-slate-500 leading-[1.6] font-body">
                   {item.body}
                 </p>
               </div>
@@ -70,20 +97,36 @@ export default function BenefitGrid({ id, label, headline, items, testId, audien
           {items.length === 5 && (
             <div
               data-testid={`${testId}-brand-tile`}
-              className="bg-slate-900 text-white p-8 md:p-10 flex flex-col justify-between"
+              className="relative bg-[#0a1834] text-white p-8 lg:p-9 flex flex-col justify-between overflow-hidden"
             >
-              <span className="inline-flex w-11 h-11 items-center justify-center rounded-xl bg-white/10 text-white">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 21s-7-4.534-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.466-7 10-7 10" />
-                  <path d="M12 8v6M9 11h6" />
-                </svg>
-              </span>
-              <div className="mt-6">
-                <div className="font-heading text-lg font-medium tracking-tight leading-tight">
-                  One platform. Front desk to financials.
+              {/* faint pattern */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 opacity-[0.06]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 1px)",
+                  backgroundSize: "32px 32px",
+                }}
+              />
+              <div className="relative">
+                <span className="inline-flex w-10 h-10 items-center justify-center rounded-[10px] bg-white/8 text-emerald-300">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 4v16M19 4v16M5 12h14" />
+                    <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none" />
+                  </svg>
+                </span>
+              </div>
+              <div className="relative mt-8">
+                <div className="font-heading text-[18px] font-medium tracking-tight leading-snug">
+                  One operating system. Front desk to financials.
                 </div>
-                <div className="mt-3 text-sm text-slate-300 font-body">
-                  No more disconnected tools. SajiloHealth replaces them with a single, calm system.
+                <div className="mt-3 text-[13px] text-slate-300 font-body leading-[1.6]">
+                  Replace disconnected tools with a single, audited platform — built for the way Nepali clinics actually work.
+                </div>
+                <div className="mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] font-semibold text-emerald-300">
+                  <span className="w-5 h-px bg-emerald-300" />
+                  Healthcare OS
                 </div>
               </div>
             </div>

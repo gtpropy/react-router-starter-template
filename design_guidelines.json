@@ -1,0 +1,104 @@
+{
+  "theme": "Light",
+  "archetype": "Swiss & High-Contrast Hybrid (Healthcare SaaS)",
+  "emotional_tone": "Confident, Clean, Modern, Calm healthcare professionalism. High authority, minimal hype.",
+  "colors": {
+    "background": {
+      "primary": "#ffffff",
+      "secondary": "#f8fafc",
+      "tertiary": "#f1f5f9"
+    },
+    "text": {
+      "primary": "#0f172a",
+      "secondary": "#475569",
+      "muted": "#94a3b8"
+    },
+    "brand": {
+      "primary": "#2563eb",
+      "primary_hover": "#1d4ed8",
+      "primary_light": "#eff6ff",
+      "accent": "#0ea5e9"
+    },
+    "border": {
+      "default": "#e2e8f0",
+      "focus": "#2563eb"
+    }
+  },
+  "typography": {
+    "headings": {
+      "family": "Outfit, sans-serif",
+      "weights": ["400", "500", "600"],
+      "tracking": "tracking-tight"
+    },
+    "body": {
+      "family": "Manrope, sans-serif",
+      "weights": ["400", "500"],
+      "tracking": "tracking-normal"
+    },
+    "scales": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl",
+      "h3": "text-xl sm:text-2xl",
+      "body": "text-base text-slate-600",
+      "label": "text-sm uppercase tracking-[0.2em] font-semibold text-slate-500"
+    }
+  },
+  "spacing_and_layout": {
+    "philosophy": "Generous Spacing, Stripe/Linear aesthetic. Heavy use of whitespace to convey premium authority.",
+    "section_padding": "py-24 sm:py-32",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "bento_grid": "grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8",
+    "card_padding": "p-8 md:p-10"
+  },
+  "surfaces_and_micro_themes": {
+    "headers": "Crystal Glass - bg-white/70 backdrop-blur-xl border-b border-slate-200/50. Text and links must be clearly legible.",
+    "cards": "Flat background (bg-white), 1px subtle border (border-slate-200), zero default shadow. Hover: shadow-md and -translate-y-[2px] transition-all duration-300.",
+    "buttons": "Primary: Solid bg-blue-600 text-white hover:bg-blue-700. Secondary: bg-white text-slate-900 border border-slate-200 hover:bg-slate-50."
+  },
+  "components_strategy": {
+    "hero": "Ultra-clean centered or asymmetric layout. Use the abstract 3D tech visual. Top label badge. Primary + Secondary CTA.",
+    "bento_grids": "Use for 'For Patients', 'For Doctors', 'For Clinics' sections. Grid Borders (The Technical Look) - exposed skeleton borders or strictly aligned clean cards.",
+    "forms": "Shadcn UI base. Minimalist styled inputs, flat backgrounds, subtle focus rings (focus:ring-2 focus:ring-blue-500 focus:border-transparent).",
+    "icons": "lucide-react for minimal, technical line icons. Stroke width 1.5."
+  },
+  "animations": {
+    "hover": "Subtle transform and shadow updates on cards. Smooth color fade on buttons.",
+    "entrance": "Framer motion - gentle fade up (y: 20, opacity: 0 -> 1) with stagger for grid items and hero text."
+  },
+  "media": {
+    "images": [
+      {
+        "category": "hero_visual",
+        "url": "https://static.prod-images.emergentagent.com/jobs/faed50f3-de58-44c1-a0bf-ffc29dd81bab/images/99b7fb3a52f7291324157bb5f355e303af4600106d6aae28f475be589e870c55.png",
+        "description": "Minimalist 3D geometric abstract shape in soft blue and pure white. Use in the Hero section to establish a pristine medical tech aesthetic."
+      },
+      {
+        "category": "clinic_dashboard_mockup",
+        "url": "https://static.prod-images.emergentagent.com/jobs/faed50f3-de58-44c1-a0bf-ffc29dd81bab/images/60841027f6a6152fe52da728f4b32c6c8d884e0b20485d7ac8048b340765a614.png",
+        "description": "Clean modern sleek smartphone and tablet layout mockup. Perfect for 'For Clinics', EMR showcase, or Beta Invite visual."
+      },
+      {
+        "category": "trust_nepal",
+        "url": "https://images.unsplash.com/photo-1597228887398-6aa9bcadf134?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxrYXRobWFuZHUlMjBuZXBhbCUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3NzkyODM2MDJ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Kathmandu landscape. Use as a subtle, low-opacity (e.g., opacity-10 or grayscale) background graphic in the 'Built for Nepal / Trust' section."
+      },
+      {
+        "category": "modern_clinic",
+        "url": "https://images.pexels.com/photos/7579823/pexels-photo-7579823.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Female doctor consulting patient in high-quality clinical setting. Use in the 'For Doctors' or overarching features section."
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Load 'Outfit' and 'Manrope' fonts via Google Fonts in the main index.html file.",
+    "Use Tailwind CSS for all styling. Rely on border-slate-200 and bg-white to build the Stripe/Linear UI look.",
+    "Use React and Framer Motion for layout structures and scroll entrance animations.",
+    "Do NOT use Inter for headings. Enforce 'Outfit'.",
+    "Avoid standard Bootstrap-style columns; use precise CSS Grids (Bento Box style).",
+    "Ensure ALL interactive elements (buttons, nav links, form inputs, toggles) have 'data-testid' attributes in kebab-case format (e.g., data-testid='hero-primary-cta').",
+    "Implement the Beta Invite form meticulously with patient/doctor/clinic role selectors.",
+    "Include a Language Toggle (EN/NE) in the Header.",
+    "Strict adherence to the neutral+blue scheme. NO neon, NO purple, NO teal.",
+    "Never use placeholder images (e.g., via.placeholder.com). ONLY use the URLs provided in the media section."
+  ]
+}
